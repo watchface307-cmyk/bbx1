@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OBC Meta Analysis</title>
+
+  <!-- Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet"/>
+
+  <!-- Chart.js if needed later -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="container" style="padding-top: 24px; padding-bottom: 64px;">
+
+  <h4 class="center-align">Meta Analysis</h4>
+  <div class="center-align" style="margin-bottom: 16px;">
+    <a href="index.html" class="btn-small blue">← Back</a>
+  </div>
+
+  <!-- Builds by Part Section -->
+  <div class="card-panel" id="builds-section">
+    <h5>Builds by Part</h5>
+    <div class="input-field">
+      <select id="part-type">
+        <option selected disabled>Select Part Type</option>
+        <option value="blade">Blade</option>
+        <option value="ratchet">Ratchet</option>
+        <option value="bit">Bit</option>
+      </select>
+      <label>Part Type</label>
+    </div>
+    <div class="input-field">
+      <select id="part-name" disabled></select>
+      <label>Part Name</label>
+    </div>
+    <div id="builds-table" class="table-container"></div>
+    <p class="center-align" id="builds-instruction" style="margin-top: 8px;">Select a build to show all matches for that build.</p>
+    <div id="matches-table" class="table-container"></div>
+  </div>
+
+  <!-- Tables for Blades, Ratchets, Bits -->
+  <div id="tables"></div>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="meta.js"></script>
+</body>
+</html>

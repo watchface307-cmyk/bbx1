@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beyblade Player Analysis</title>
+
+  <!-- Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" />
+
+  <!-- Chart.js for radar chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="container" style="padding-top: 24px; padding-bottom: 64px;">
+
+  <h4 class="center-align">Player Performance Analysis</h4>
+  <div class="center-align" style="margin-bottom: 16px;">
+    <a href="index.html" class="btn-small blue">← Back</a>
+  </div>
+
+  <!-- Player Dropdown -->
+  <div class="input-field">
+    <select id="player-select"></select>
+    <label>Select Player</label>
+  </div>
+
+  <!-- All Player Analytics Section (wrapped correctly now) -->
+  <div id="player-analytics">
+    <div id="analytics-content">
+      <!-- Player Summary Card -->
+      <div id="player-card" class="card-panel hidden">
+        <h5 id="player-name"></h5>
+        <p><b>Most Valuable Bey:</b> <span id="mvb"></span></p>
+        <p><b>Reason:</b> <span id="mvb-reason"></span></p>
+        <p><b>Most Common Finish (Win):</b> <span id="finish-win"></span></p>
+        <p><b>Most Common Finish (Loss):</b> <span id="finish-loss"></span></p>
+        <p><b>Win Rate:</b> <span id="win-rate"></span></p>
+
+        <div style="max-width: 400px; margin: 0 auto;">
+          <canvas id="radarChart"></canvas>
+        </div>
+
+        <div class="center-align" style="margin-top: 16px;">
+          <button id="toggle-advanced" class="btn blue">Show Advanced</button>
+          <button id="show-all-matches" class="btn blue">Show All Matches</button>
+        </div>
+      </div>
+
+      <!-- Advanced Stats -->
+      <div id="advanced-card" class="card-panel hidden">
+        <h6><b>Win by Finish</b></h6>
+        <div id="win-table" class="responsive-table"></div>
+
+        <h6><b>Loss by Finish</b></h6>
+        <div id="loss-table" class="responsive-table"></div>
+      </div>
+    </div>
+
+    <!-- For Back Button Callback -->
+    <div id="back-button-container" class="center-align" style="margin-top: 16px;"></div>
+  </div>
+
+  <!-- JS Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
