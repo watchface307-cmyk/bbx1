@@ -554,32 +554,63 @@ export function MatchTracker() {
 
           {player1 && player2 && (
             <>
-              {/* Sticky/Hovering Score Bar */}
-              <div className="fixed top-16 left-0 right-0 z-20 bg-white border-b border-gray-200 shadow-lg p-4 mb-6">
-                <div className="max-w-7xl mx-auto flex justify-between items-center">
+              {/* Tournament Officer Input - Always Visible */}
+              <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-4">Match Information</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Tournament Officer *
+                    </label>
                     <input
                       type="text"
-                      placeholder="Tournament Officer"
+                      placeholder="Enter Tournament Officer name"
                       value={tournamentOfficer}
                       onChange={(e) => setTournamentOfficer(e.target.value)}
-                      className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      required
                     />
+                    <p className="text-xs text-gray-500 mt-1">
+                      Required for match submission
+                    </p>
                   </div>
-                  <div className="text-lg font-bold">
-                    <span className={`${p1Score > p2Score ? 'text-green-600' : p1Score < p2Score ? 'text-red-600' : 'text-gray-600'}`}>
-                      {player1}: {p1Score}
-                    </span>
-                    <span className="mx-4 text-gray-400">|</span>
-                    <span className={`${p2Score > p1Score ? 'text-green-600' : p2Score < p1Score ? 'text-red-600' : 'text-gray-600'}`}>
-                      {player2}: {p2Score}
-                    </span>
+                  <div className="flex items-end">
+                    <div className="text-lg font-bold">
+                      <span className={`${p1Score > p2Score ? 'text-green-600' : p1Score < p2Score ? 'text-red-600' : 'text-gray-600'}`}>
+                        {player1}: {p1Score}
+                      </span>
+                      <span className="mx-4 text-gray-400">|</span>
+                      <span className={`${p2Score > p1Score ? 'text-green-600' : p2Score < p1Score ? 'text-red-600' : 'text-gray-600'}`}>
+                        {player2}: {p2Score}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Content with top margin to account for fixed header */}
-              <div className="mt-20">
+              {/* Sticky Score Bar - Simplified */}
+              <div className="fixed top-16 left-0 right-0 z-20 bg-blue-600 text-white shadow-lg p-3">
+                <div className="max-w-7xl mx-auto flex justify-between items-center">
+                  <div className="text-sm font-medium">
+                    Round {round} • {selectedTournamentData?.name}
+                  </div>
+                  <div className="text-lg font-bold text-center">
+                    <span className={`${p1Score > p2Score ? 'text-yellow-300' : p1Score < p2Score ? 'text-gray-300' : 'text-white'}`}>
+                      {player1}: {p1Score}
+                    </span>
+                    <span className="mx-4 text-gray-300">vs</span>
+                    <span className={`${p2Score > p1Score ? 'text-yellow-300' : p2Score < p1Score ? 'text-gray-300' : 'text-white'}`}>
+                      {player2}: {p2Score}
+                    </span>
+                  </div>
+                  <div className="text-sm font-medium">
+                    TO: {tournamentOfficer || 'Not Set'}
+                  </div>
+                </div>
+              </div>
+
+              {/* Content with top margin for sticky header */}
+              <div className="mt-16">
               {/* Phase 1 Decks */}
               <div className="bg-white rounded-lg shadow-md p-6 mb-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-4">Phase 1 Decks</h3>
